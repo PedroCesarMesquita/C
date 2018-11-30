@@ -18,6 +18,7 @@ int main() {
 		imprimeMenu();
 		scanf("%d", &op);
 		switch(op) {
+			case 0: puts("Voce escolheu sair"); break;
 			case 1: imprimeVetor(vetor, tam); break;
 			case 2: leVetor(vetor, tam); break;
 			case 3: selectionSort(vetor, tam); break;
@@ -25,7 +26,9 @@ int main() {
 			case 5: bubbleSort(vetor, tam); break;
 			case 6: shellSort(vetor, tam); break;
 			case 7: quickSort(vetor, 0, tam - 1); break;
+			default: puts("Digite uma opcao valida"); break;
 		}
+		if(op >= 2 && op <= 7) imprimeVetor(vetor, tam);
 	}
 	return 0;
 }
@@ -76,7 +79,6 @@ void selectionSort(int *vetor, int tam) {
 		}
 		troca(&vetor[i], &vetor[menor]);
 	}
-	puts("Ordenado com metodo Selecao");
 }
 
 void insertionSort(int *vetor, int tam) {
@@ -85,7 +87,6 @@ void insertionSort(int *vetor, int tam) {
 		for(j = i; j > 0 && vetor[j] < vetor[j - 1]; j--) {
 			troca(&vetor[j], &vetor[j - 1]);
 		}
-	puts("Ordenado com metodo Insercao");
 }
 
 void bubbleSort(int *vetor, int tam) {
@@ -99,7 +100,6 @@ void bubbleSort(int *vetor, int tam) {
 			}
 		}
 	} while(!ordenado);
-	puts("Ordenado com metodo Bolha");
 }
 
 void shellSort(int *vetor, int tam) {
@@ -110,7 +110,6 @@ void shellSort(int *vetor, int tam) {
 				troca(&vetor[j], &vetor[j - n]);
 			}
 		}
-	puts("Ordenado com metodo Shell");
 }
 
 void quickSort(int *vetor, int esq, int dir) {
