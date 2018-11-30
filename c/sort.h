@@ -7,8 +7,8 @@ void selectionSort(int *vetor, int tam) {
 				menor = j;
 		}
 		troca = vetor[i];
-        vetor[i] = vetor[menor];
-        vetor[menor] = troca;
+		vetor[i] = vetor[menor];
+		vetor[menor] = troca;
 	}
 }
 
@@ -29,8 +29,8 @@ void bubbleSort(int *vetor, int tam) {
 		for(i = 1; i < tam; i++) {
 			if(vetor[i] < vetor[i - 1]) {
 				troca = vetor[i];
-                vetor[i] = vetor[i - 1];
-                vetor[i - 1] = troca;
+				vetor[i] = vetor[i - 1];
+				vetor[i - 1] = troca;
 				ordenado = 0;
 			}
 		}
@@ -42,9 +42,9 @@ void shellSort(int *vetor, int tam) {
 	while(n /= 2)
 		for(i = n; i < tam; i += n) {
 			for(j = i; j > 0 && vetor[j] < vetor[j - n]; j -= n) {
-                troca = vetor[j];
-                vetor[j] = vetor[j - n];
-                vetor[j - n] = troca;
+				troca = vetor[j];
+				vetor[j] = vetor[j - n];
+				vetor[j - n] = troca;
 			}
 		}
 }
