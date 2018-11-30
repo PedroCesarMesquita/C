@@ -17,8 +17,8 @@ void insertionSort(int *vetor, int tam) {
 	for(i = 1; i < tam; i++)
 		for(j = i; j > 0 && vetor[j] < vetor[j - 1]; j--) {
 			troca = vetor[j];
-            vetor[j] = vetor[j - 1];
-            vetor[j - 1] = troca;
+			vetor[j] = vetor[j - 1];
+			vetor[j - 1] = troca;
 		}
 }
 
