@@ -1,66 +1,66 @@
-void selectionSort(int *vetor, int tam) {
-	int i, j, menor, troca;
-	for(i = 0; i < tam; i++) {
-		menor = i;
-		for(j = i + 1; j < tam; j++) {
-			if(vetor[j] < vetor[menor])
-				menor = j;
+void selectionSort(int *array, int length) {
+	int i, j, min, aux;
+	for(i = 0; i < length; i++) {
+		min = i;
+		for(j = i + 1; j < length; j++) {
+			if(array[j] < array[min])
+				min = j;
 		}
-		troca = vetor[i];
-		vetor[i] = vetor[menor];
-		vetor[menor] = troca;
+		aux = array[i];
+		array[i] = array[min];
+		array[min] = aux;
 	}
 }
 
-void insertionSort(int *vetor, int tam) {
-	int i, j, troca;
-	for(i = 1; i < tam; i++)
-		for(j = i; j > 0 && vetor[j] < vetor[j - 1]; j--) {
-			troca = vetor[j];
-			vetor[j] = vetor[j - 1];
-			vetor[j - 1] = troca;
+void insertionSort(int *array, int length) {
+	int i, j, aux;
+	for(i = 1; i < length; i++)
+		for(j = i; j > 0 && array[j] < array[j - 1]; j--) {
+			aux = array[j];
+			array[j] = array[j - 1];
+			array[j - 1] = aux;
 		}
 }
 
-void bubbleSort(int *vetor, int tam) {
-	int i, ordenado, troca;
+void bubbleSort(int *array, int length) {
+	int i, swapped, aux;
 	do {
-		ordenado = 1;
-		for(i = 1; i < tam; i++) {
-			if(vetor[i] < vetor[i - 1]) {
-				troca = vetor[i];
-				vetor[i] = vetor[i - 1];
-				vetor[i - 1] = troca;
-				ordenado = 0;
+		swapped = 0;
+		for(i = 1; i < length; i++) {
+			if(array[i] < array[i - 1]) {
+				aux = array[i];
+				array[i] = array[i - 1];
+				array[i - 1] = aux;
+				swapped = 1;
 			}
 		}
-	} while(!ordenado);
+	} while(swapped);
 }
 
-void shellSort(int *vetor, int tam) {
-	int i, j, troca, gap = 1;
-	for(i = 0; i < tam; i++)
+void shellSort(int *array, int length) {
+	int i, j, aux, gap = 1;
+	for(i = 0; i < length; i++)
 		gap = gap * 3 + 1;
 	for(; gap; gap = (gap - 1) / 3)
-		for(i = gap; i < tam; i++) {
-			for(j = i; j >= gap && vetor[j] < vetor[j - gap]; j -= gap) {
-				troca = vetor[j];
-				vetor[j] = vetor[j - gap];
-				vetor[j - gap] = troca;
+		for(i = gap; i < length; i++) {
+			for(j = i; j >= gap && array[j] < array[j - gap]; j -= gap) {
+				aux = array[j];
+				array[j] = array[j - gap];
+				array[j - gap] = aux;
 			}
 		}
 }
 
-void quickSort(int *vetor, int esq, int dir) {
-   	int pivo = esq, i, j, troca;
-   	for(i = esq + 1; i <= dir; i++) {
-		if(vetor[j = i] < vetor[pivo]) {
-			troca = vetor[j];
-			while(j > pivo)
-				vetor[j] = vetor[--j];
-			vetor[pivo++] = troca;
+void quickSort(int *array, int lo, int hi) {
+   	int pivot = lo, i, j, aux;
+   	for(i = lo + 1; i <= hi; i++) {
+		if(array[j = i] < array[pivot]) {
+			aux = array[j];
+			while(j > pivot)
+				array[j] = array[--j];
+			array[pivot++] = aux;
 		}
 	}
-	if(pivo > esq + 1) quickSort(vetor, esq, pivo - 1);
-	if(pivo < dir - 1) quickSort(vetor, pivo + 1, dir);
+	if(pivot > lo + 1) quickSort(array, lo, pivot - 1);
+	if(pivot < hi - 1) quickSort(array, pivot + 1, hi);
 }
