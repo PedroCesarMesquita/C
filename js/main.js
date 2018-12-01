@@ -1,12 +1,8 @@
 const randomArray = (length = 100) => {
-    let array = [], availableNumbers = [];
+    let array = [];
     for(let i = 0; i < length; i++)
-        availableNumbers.push(i + 1);
-    for(let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * availableNumbers.length);
-        array.push(availableNumbers[randomIndex]);
-        availableNumbers.splice(randomIndex, 1);
-    }
+        array.push(i + 1);
+    array.sort(() => Math.random() - 0.5);
     return array;
 }
 

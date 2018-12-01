@@ -23,18 +23,18 @@ const insertionSort = array => {
 }
 
 const bubbleSort = array => {
-    let ordered;
+    let swapped;
     do {
-        ordered = true;
+        swapped = false;
         for(let i = 1; i < array.length; i++) {
             if(array[i] < array[i - 1]) {
                 const aux = array[i];
                 array[i] = array[i - 1];
                 array[i - 1] = aux;
-                ordered = false;
+                swapped = true;
             }
         }
-    } while(!ordered);
+    } while(swapped);
     return array;
 }
 
@@ -55,9 +55,9 @@ const shellSort = (array) => {
     return array;
 }
 
-const quickSort = (array, left = 0, right = array.length - 1) => {
-    let pivot = left;
-    for(let i = left + 1; i <= right; i++) {
+const quickSort = (array, lo = 0, hi = array.length - 1) => {
+    let pivot = lo;
+    for(let i = lo + 1; i <= hi; i++) {
         if(array[i] < array[pivot]) {
             const aux = array[i];
             for(j = i; j > pivot; j--)
@@ -65,6 +65,6 @@ const quickSort = (array, left = 0, right = array.length - 1) => {
             array[pivot++] = aux;
         }
     }
-    if(pivot > left + 1) quickSort(array, left, pivot - 1);
-    if(pivot < right - 1) quickSort(array, pivot + 1, right);
+    if(pivot > lo + 1) quickSort(array, lo, pivot - 1);
+    if(pivot < hi - 1) quickSort(array, pivot + 1, hi);
 }
