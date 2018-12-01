@@ -1,4 +1,4 @@
-const randomArray = (length = 50) => {
+const randomArray = (length = 100) => {
     let array = [], availableNumbers = [];
     for(let i = 0; i < length; i++)
         availableNumbers.push(i + 1);
@@ -29,32 +29,18 @@ const renderArray = () => {
 renderArray();
 
 const buttonRandomArrayEl = document.querySelector('#random-array');
-const buttonSelectionSortEl = document.querySelector('#selection-sort');
-const buttonInsertionSortEl = document.querySelector('#insertion-sort');
-const buttonBubbleSortEl = document.querySelector('#bubble-sort');
-const buttonQuickSortEl = document.querySelector('#quick-sort');
 
 buttonRandomArrayEl.onclick = () => {
     array = randomArray();
     renderArray();
 }
 
-buttonSelectionSortEl.onclick = () => {
-    selectionSort(array);
-    renderArray();
-}
+const sortButtons = document.querySelectorAll('#sort-array > button');
+const sortFunctions = [selectionSort, insertionSort, bubbleSort, quickSort];
 
-buttonInsertionSortEl.onclick = () => {
-    insertionSort(array);
-    renderArray();
-}
-
-buttonBubbleSortEl.onclick = () => {
-    bubbleSort(array);
-    renderArray();
-}
-
-buttonQuickSortEl.onclick = () => {
-    quickSort(array);
-    renderArray();
+for(let i = 0; i < sortButtons.length; i++) {
+    sortButtons[i].onclick = () => {
+        sortFunctions[i](array);
+        renderArray();
+    }
 }
