@@ -38,6 +38,23 @@ const bubbleSort = array => {
     return array;
 }
 
+const shellSort = (array) => {
+    let gaps = new Array(array.length);
+    gaps[array.length - 1] = 1;
+    for(let i = array.length - 2; i >= 0; i--)
+        gaps[i] = gaps[i + 1] * 3 + 1;
+    for(gap of gaps) {
+        for(let i = gap; i < array.length; i++) {
+            for(let j = i; j >= gap && array[j] < array[j - gap]; j -= gap) {
+                const aux = array[j];
+                array[j] = array[j - gap];
+                array[j - gap] = aux;
+            }
+        }
+    }
+    return array;
+}
+
 const quickSort = (array, left = 0, right = array.length - 1) => {
     let pivot = left;
     for(let i = left + 1; i <= right; i++) {

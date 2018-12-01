@@ -36,7 +36,7 @@ buttonRandomArrayEl.onclick = () => {
 }
 
 const sortButtons = document.querySelectorAll('#sort-array > button');
-const sortFunctions = [selectionSort, insertionSort, bubbleSort, quickSort];
+const sortFunctions = [selectionSort, insertionSort, bubbleSort, shellSort, quickSort];
 
 for(let i = 0; i < sortButtons.length; i++) {
     sortButtons[i].onclick = () => {
