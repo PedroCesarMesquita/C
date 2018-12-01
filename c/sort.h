@@ -38,13 +38,15 @@ void bubbleSort(int *vetor, int tam) {
 }
 
 void shellSort(int *vetor, int tam) {
-	int i, j, n = tam, troca;
-	while(n /= 2)
-		for(i = n; i < tam; i += n) {
-			for(j = i; j > 0 && vetor[j] < vetor[j - n]; j -= n) {
+	int i, j, troca, gap = 1;
+	for(i = 0; i < tam; i++)
+		gap = gap * 3 + 1;
+	for(; gap; gap = (gap - 1) / 3)
+		for(i = gap; i < tam; i++) {
+			for(j = i; j >= gap && vetor[j] < vetor[j - gap]; j -= gap) {
 				troca = vetor[j];
-				vetor[j] = vetor[j - n];
-				vetor[j - n] = troca;
+				vetor[j] = vetor[j - gap];
+				vetor[j - gap] = troca;
 			}
 		}
 }
