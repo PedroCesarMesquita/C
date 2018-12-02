@@ -8,8 +8,8 @@ void scanArray(int *, int);
 int main() {
 	const int length = 20;
 	int array[20] = {7, 1, 14, 3, 5, 4, 13, 8, 9, 11, 17, 18, 6, 15, 12, 2, 20, 19, 16, 10};
-	int op = 1;
-	while(op) {
+	int op;
+	do {
 		printMenu();
 		scanf("%d", &op);
 		switch(op) {
@@ -24,7 +24,7 @@ int main() {
 			default: puts("Please enter a valid option"); break;
 		}
 		if(op >= 2 && op <= 7) printArray(array, length);
-	}
+	} while(op);
 	return 0;
 }
 
