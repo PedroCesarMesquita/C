@@ -13,12 +13,12 @@ const selectionSort = array => {
 }
 
 const insertionSort = array => {
-    for(let i = 1; i < array.length; i++)
-        for(let j = i; j > 0 && array[j] < array[j - 1]; j--) {
-            const aux = array[j];
+    for(let i = 1, j; i < array.length; i++) {
+        let j, current = array[i];
+        for(j = i; j > 0 && current < array[j - 1]; j--)
             array[j] = array[j - 1];
-            array[j - 1] = aux;
-        }
+        array[j] = current;
+    }
     return array;
 }
 

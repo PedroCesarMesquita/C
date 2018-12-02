@@ -13,13 +13,13 @@ void selectionSort(int *array, int length) {
 }
 
 void insertionSort(int *array, int length) {
-	int i, j, aux;
-	for(i = 1; i < length; i++)
-		for(j = i; j > 0 && array[j] < array[j - 1]; j--) {
-			aux = array[j];
+	int i, j, current;
+	for(i = 1; i < length; i++) {
+		current = array[i];
+		for(j = i; j > 0 && current < array[j - 1]; j--)
 			array[j] = array[j - 1];
-			array[j - 1] = aux;
-		}
+		array[j] = current;
+	}
 }
 
 void bubbleSort(int *array, int length) {
