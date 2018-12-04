@@ -9,6 +9,7 @@ def printMenu():
     print('3 - Selection Sort')
     print('4 - Insertion Sort')
     print('5 - Bubble Sort')
+    print('6 - Shell Sort')
     print('0 - Exit')
     print('==================')
 
@@ -27,5 +28,6 @@ while op:
     elif op == 3: print(sort.selectionSort(array))
     elif op == 4: print(sort.insertionSort(array))
     elif op == 5: print(sort.bubbleSort(array))
+    elif op == 6: print(sort.shellSort(array))
     else:         print('Please choose a valid option')
         

@@ -11,12 +11,12 @@ def selectionSort(array):
 
 def insertionSort(array):
     for i in range(1, len(array)):
-        current = array[i]
+        currentValue = array[i]
         j = i
-        while j > 0 and current < array[j - 1]:
+        while j > 0 and currentValue < array[j - 1]:
             array[j] = array[j - 1]
             j -= 1
-        array[j] = current
+        array[j] = currentValue
     return array
 
 def bubbleSort(array):
@@ -29,4 +29,19 @@ def bubbleSort(array):
                 array[i] = array[i - 1]
                 array[i - 1] = aux
                 swapped = 1
+    return array
+
+def shellSort(array):
+    gap = 1
+    for i in range(len(array)):
+        gap = gap * 3 + 1
+    while gap > 0:
+        for i in range(gap, len(array)):
+            currentValue = array[i]
+            j = i
+            while j >= gap and currentValue < array[j - gap]:
+                array[j] = array[j - gap]
+                j -= gap
+            array[j] = currentValue
+        gap = int((gap - 1) / 3)
     return array
