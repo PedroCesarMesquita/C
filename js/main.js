@@ -1,4 +1,4 @@
-const randomArray = (length = 100) => {
+const randomArray = (length = 1000) => {
     let array = [];
     for(let i = 0; i < length; i++)
         array.push(i + 1);
@@ -22,6 +22,12 @@ const renderArray = () => {
     array.forEach(renderElement);
 };
 
+const verifySort = () => {
+    for(let i = 1; i < array.length; i++)
+        if(array[i] < array[i - 1]) return false;
+    return true;
+}
+
 renderArray();
 
 const buttonRandomArrayEl = document.querySelector('#random-array');
@@ -37,6 +43,7 @@ const sortFunctions = [selectionSort, insertionSort, bubbleSort, shellSort, quic
 for(let i = 0; i < sortButtons.length; i++) {
     sortButtons[i].onclick = () => {
         sortFunctions[i](array);
+        console.log(verifySort() ? 'Ok' : 'Error');
         renderArray();
     }
 }
