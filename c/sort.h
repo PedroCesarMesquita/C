@@ -38,9 +38,8 @@ void bubbleSort(int *array, int length) {
 }
 
 void shellSort(int *array, int length) {
-	int i, j, aux, gap = 1;
-	for(i = 0; i < length; i++)
-		gap = gap * 3 + 1;
+	int i, j, aux, gap;
+	for(gap = 1; gap < length / 3; gap = gap * 3 + 1);
 	for(; gap; gap = (gap - 1) / 3)
 		for(i = gap; i < length; i++) {
 			for(j = i; j >= gap && array[j] < array[j - gap]; j -= gap) {
