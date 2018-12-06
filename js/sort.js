@@ -14,10 +14,10 @@ const selectionSort = array => {
 
 const insertionSort = array => {
     for(let i = 1, j; i < array.length; i++) {
-        let j, current = array[i];
-        for(j = i; j > 0 && current < array[j - 1]; j--)
+        let j, currentValue = array[i];
+        for(j = i; j > 0 && currentValue < array[j - 1]; j--)
             array[j] = array[j - 1];
-        array[j] = current;
+        array[j] = currentValue;
     }
     return array;
 }
@@ -43,11 +43,10 @@ const shellSort = array => {
     for(gap = 1; gap < array.length / 3; gap = gap * 3 + 1);
     for(; gap; gap = (gap - 1) / 3)
         for(let i = gap; i < array.length; i++) {
-            for(let j = i; j >= gap && array[j] < array[j - gap]; j -= gap) {
-                const aux = array[j];
+            let j, currentValue = array[i];
+            for(j = i; j >= gap && currentValue < array[j - gap]; j -= gap)
                 array[j] = array[j - gap];
-                array[j - gap] = aux;
-            }
+            array[j] = currentValue;
         }
     return array;
 }
