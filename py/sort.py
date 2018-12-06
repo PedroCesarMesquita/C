@@ -32,11 +32,11 @@ def bubbleSort(array):
     return array
 
 def shellSort(array):
+    length = len(array)
     gap = 1
-    for i in range(len(array)):
-        gap = gap * 3 + 1
-    while gap > 0:
-        for i in range(gap, len(array)):
+    while gap < length / 3: gap = gap * 3 + 1
+    while gap:
+        for i in range(gap, length):
             currentValue = array[i]
             j = i
             while j >= gap and currentValue < array[j - gap]:
