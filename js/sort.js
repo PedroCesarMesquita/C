@@ -12,6 +12,25 @@ const selectionSort = array => {
     return array;
 }
 
+const doubleSelectionSort = (array) => {
+    let left = 0, right = array.length - 1;
+    while(left <= right) {
+        let min = left, max = right;
+        for(let i = left + 1; i <= right; i++)
+            if(array[i] < array[min]) min = i;
+        let aux = array[left];
+        array[left] = array[min];
+        array[min] = aux;
+        for(let i = right - 1; i >= left; i--)
+            if(array[i] > array[max]) max = i;
+        aux = array[right];
+        array[right] = array[max];
+        array[max] = aux;
+        left++;
+        right--;
+    }
+}
+
 const insertionSort = array => {
     for(let i = 1, j; i < array.length; i++) {
         let j, currentValue = array[i];
@@ -63,4 +82,5 @@ const quickSort = (array, lo = 0, hi = array.length - 1) => {
     }
     if(pivot > lo + 1) quickSort(array, lo, pivot - 1);
     if(pivot < hi - 1) quickSort(array, pivot + 1, hi);
+    return array;
 }
